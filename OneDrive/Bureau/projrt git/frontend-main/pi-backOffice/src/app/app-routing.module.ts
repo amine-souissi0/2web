@@ -14,7 +14,11 @@ import { TemplateComponent } from './template/template.component';
 import { TypographyComponent } from './typography/typography.component';
 import { VirtualRealityComponent } from './virtual-reality/virtual-reality.component';
 import {OffersComponent} from './offers/offers.component';
+import { UserFormComponent } from './user-form/user-form.component';
+import { UserListComponent } from './user-list/user-list.component';
 const routes: Routes = [
+  { path: 'users', component: UserListComponent },
+  { path: 'adduser', component: UserFormComponent },
 {path:'dashboard',component:DashboradComponent},
 {path:'billing',component:BillingComponent},
 {path:'profile',component:ProfileComponent},
