@@ -2,6 +2,7 @@
 require_once '../../config/database.php';
 require_once '../../controllers/UtilisateurController.php';
 
+
 $database = new Database();
 $db = $database->getConnection();
 
@@ -42,8 +43,8 @@ ob_start();
     </div>
     <?php endif; ?>
 
-    <h2>Créer un nouvel utilisateur</h2>
-    <form id="createUserForm" action="" method="POST">
+    <h2 class="title">Créer un nouvel utilisateur</h2>
+    <form id="createUserForm" action="" method="POST" class="form">
         <input type="text" name="nom" placeholder="Nom" required>
         <input type="email" name="email" placeholder="Email" required>
         <input type="password" name="mot_de_passe" placeholder="Mot de passe" required>
@@ -52,11 +53,11 @@ ob_start();
             <option value="manager">Manager</option>
             <option value="employe">Employé</option>
         </select>
-        <button type="submit" name="create">Créer</button>
+        <button type="submit" name="create" class="button">Créer</button>
     </form>
 
-    <h2>Recherche multicritères</h2>
-    <form action="" method="GET">
+    <h2 class="title">Recherche multicritères</h2>
+    <form action="" method="GET" class="form">
         <input type="text" name="nom" placeholder="Nom">
         <input type="email" name="email" placeholder="Email">
         <select name="role">
@@ -75,11 +76,11 @@ ob_start();
             <option value="ASC">Ordre Ascendant</option>
             <option value="DESC">Ordre Descendant</option>
         </select>
-        <button type="submit">Rechercher</button>
+        <button type="submit" class="button">Rechercher</button>
     </form>
 
-    <h2>Liste des utilisateurs</h2>
-    <table border="1" class="user-table">
+    <h2 class="title">Liste des utilisateurs</h2>
+    <table class="user-table">
         <thead>
             <tr>
                 <th><a href="?tri_colonne=id&tri_ordre=<?= isset($_GET['tri_ordre']) && $_GET['tri_ordre'] == 'ASC' ? 'DESC' : 'ASC' ?>">ID</a></th>
@@ -98,7 +99,7 @@ ob_start();
                 <td><?= $utilisateur['email'] ?></td>
                 <td><?= $utilisateur['role'] ?></td>
                 <td><?= $utilisateur['date_creation'] ?></td>
-                <td>
+                <td class="actions">
                     <form action="" method="POST" style="display:inline;">
                         <input type="hidden" name="id" value="<?= $utilisateur['id'] ?>">
                         <input type="text" name="nom" value="<?= $utilisateur['nom'] ?>" required>
@@ -108,11 +109,11 @@ ob_start();
                             <option value="manager" <?= $utilisateur['role'] === 'manager' ? 'selected' : '' ?>>Manager</option>
                             <option value="employe" <?= $utilisateur['role'] === 'employe' ? 'selected' : '' ?>>Employé</option>
                         </select>
-                        <button type="submit" name="update">Mettre à jour</button>
+                        <button type="submit" name="update" class="button">Mettre à jour</button>
                     </form>
                     <form action="" method="POST" style="display:inline;">
                         <input type="hidden" name="id" value="<?= $utilisateur['id'] ?>">
-                        <button type="submit" name="delete">Supprimer</button>
+                        <button type="submit" name="delete" class="button">Supprimer</button>
                     </form>
                 </td>
             </tr>
@@ -120,7 +121,7 @@ ob_start();
         </tbody>
     </table>
 
-    <h2>Statistiques</h2>
+    <h2 class="title">Statistiques</h2>
     <p>Nombre total d'utilisateurs : <?= $utilisateurController->compterUtilisateurs(); ?></p>
 </div>
 
@@ -156,7 +157,7 @@ document.getElementById('createUserForm').addEventListener('submit', function(ev
 });
 
 function validateEmail(email) {
-    var re = /^[^\s@]+@[^\s@]+.[^\s@]+$/;
+    var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
 }
 </script>

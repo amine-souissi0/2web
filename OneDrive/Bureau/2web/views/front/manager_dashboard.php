@@ -19,45 +19,54 @@ $title = "Tableau de Bord Manager";
 ob_start();
 ?>
 
-<h2>Rechercher des employés</h2>
-<form action="" method="GET">
-    <input type="text" name="nom" placeholder="Nom">
-    <input type="email" name="email" placeholder="Email">
-    <button type="submit">Rechercher</button>
-</form>
+<div class="container">
+    <h1 class="title">Tableau de Bord Manager</h1>
 
-<h2>Liste des employés</h2>
-<table border="1">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nom</th>
-            <th>Email</th>
-            <th>Date de Création</th>
-            <!-- Ajoutez des colonnes spécifiques pour les évaluations si nécessaire -->
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-        if ($_SERVER['REQUEST_METHOD'] === 'GET' && (isset($_GET['nom']) || isset($_GET['email']))) {
-            $utilisateurs = json_decode($utilisateurController->rechercherUtilisateurs($_GET), true);
-        } else {
-            $utilisateurs = json_decode($utilisateurController->lireUtilisateurs(), true);
-        }
+    <section class="search-section">
+        <h2 class="section-title">Rechercher des employés</h2>
+        <form action="" method="GET" class="form">
+            <input type="text" name="nom" placeholder="Nom" class="input-field">
+            <input type="email" name="email" placeholder="Email" class="input-field">
+            <button type="submit" class="button">Rechercher</button>
+        </form>
+    </section>
 
-        foreach ($utilisateurs as $utilisateur):
-            if ($utilisateur['role'] === 'employe'): ?>
-            <tr>
-                <td><?= $utilisateur['id'] ?></td>
-                <td><?= $utilisateur['nom'] ?></td>
-                <td><?= $utilisateur['email'] ?></td>
-                <td><?= $utilisateur['date_creation'] ?></td>
-            </tr>
-            <?php endif;
-        endforeach; ?>
-    </tbody>
-</table>
+    <section class="employees-section">
+        <h2 class="section-title">Liste des employés</h2>
+        <table class="user-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Date de Création</th>
+                    <!-- Ajoutez des colonnes spécifiques pour les évaluations si nécessaire -->
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                if ($_SERVER['REQUEST_METHOD'] === 'GET' && (isset($_GET['nom']) || isset($_GET['email']))) {
+                    $utilisateurs = json_decode($utilisateurController->rechercherUtilisateurs($_GET), true);
+                } else {
+                    $utilisateurs = json_decode($utilisateurController->lireUtilisateurs(), true);
+                }
+
+                foreach ($utilisateurs as $utilisateur):
+                    if ($utilisateur['role'] === 'employe'): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($utilisateur['id']) ?></td>
+                        <td><?= htmlspecialchars($utilisateur['nom']) ?></td>
+                        <td><?= htmlspecialchars($utilisateur['email']) ?></td>
+                        <td><?= htmlspecialchars($utilisateur['date_creation']) ?></td>
+                    </tr>
+                    <?php endif;
+                endforeach; ?>
+            </tbody>
+        </table>
+    </section>
+</div>
 
 <?php
 $content = ob_get_clean();
 include 'base_front.php';
+?>

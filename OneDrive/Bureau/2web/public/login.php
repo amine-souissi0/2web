@@ -8,6 +8,15 @@ $db = $database->getConnection();
 
 $utilisateur = new Utilisateur($db);
 
+// Vérifier si des utilisateurs existent déjà
+$nombre_utilisateurs = $utilisateur->compter();  // Cette méthode doit retourner le nombre total d'utilisateurs
+
+if ($nombre_utilisateurs == 0) {
+    // Rediriger vers la page de création des utilisateurs
+    header("Location: /views/back/users.php");
+    exit();
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = htmlspecialchars(strip_tags($_POST['email']));
     $mot_de_passe = htmlspecialchars(strip_tags($_POST['mot_de_passe']));
