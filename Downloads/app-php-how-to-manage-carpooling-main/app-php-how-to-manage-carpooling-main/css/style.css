@@ -1,0 +1,146 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h2.title {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.form input, .form select, .form button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.form button {
+    background-color: #007BFF;
+    color: #fff;
+    cursor: pointer;
+}
+
+.navbar {
+    background-color: #333;
+    padding: 10px;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #f4f4f4;
+    cursor: pointer;
+}
+
+.button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #218838;
+}
+
+.footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Add these to your existing style.css */
+
+/* Style for the dashboard page links */
+.dashboard-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.dashboard-list li {
+    margin-bottom: 20px;
+}
+
+.dashboard-list a.button {
+    background-color: #007BFF;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    width: 200px;
+    text-align: center;
+}
+
+.dashboard-list a.button:hover {
+    background-color: #0056b3;
+}
+
+/* Style for the logout link */
+a.logout-link {
+    display: inline-block;
+    color: red;
+    font-weight: bold;
+    text-decoration: none;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: 1px solid red;
+    border-radius: 5px;
+}
+
+a.logout-link:hover {
+    background-color: red;
+    color: white;
+}
+
+/* Spacing between the list items in the dashboard */
+.dashboard-list li {
+    margin-bottom: 20px;
+}
+
